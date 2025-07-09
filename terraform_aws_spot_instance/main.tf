@@ -41,6 +41,7 @@ resource "aws_security_group" "market_analysis_sg" {
 }
 
 resource "aws_spot_instance_request" "market_analysis_spot" {
+
   ami                    = var.ami_id
   instance_type          = var.instance_type
   spot_price             = var.spot_price
@@ -62,7 +63,7 @@ resource "aws_spot_instance_request" "market_analysis_spot" {
               sudo systemctl enable docker
 
               # Clone the repository - IMPORTANT: Replace with your actual repository URL
-              git clone https://github.com/your-username/MarketAnalysis.git /home/ubuntu/MarketAnalysis
+              git clone https://github.com/Maheshcloud/MarketAnalysis.git /home/ubuntu/MarketAnalysis
               cd /home/ubuntu/MarketAnalysis
 
               # Build and run Docker container
