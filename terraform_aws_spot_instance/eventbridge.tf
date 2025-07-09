@@ -1,7 +1,7 @@
 resource "aws_cloudwatch_event_rule" "start_instance_rule" {
   name                = "start-market-analysis-instance"
   description         = "Starts the Market Analysis EC2 instance at market open"
-  schedule_expression = "cron(0 14 ? * MON-FRI *)" # Example: 14:00 UTC (2 PM UTC) Monday-Friday. Adjust to your market open time in UTC.
+  schedule_expression = "cron(0 03 ? * MON-FRI *)" # Example: 14:00 UTC (2 PM UTC) Monday-Friday. Adjust to your market open time in UTC.
 }
 
 resource "aws_cloudwatch_event_target" "start_instance_target" {
@@ -22,7 +22,7 @@ resource "aws_lambda_permission" "allow_cloudwatch_to_call_start_lambda" {
 resource "aws_cloudwatch_event_rule" "terminate_instance_rule" {
   name                = "terminate-market-analysis-instance"
   description         = "Terminates the Market Analysis EC2 instance at market close"
-  schedule_expression = "cron(0 21 ? * MON-FRI *)" # Example: 21:00 UTC (9 PM UTC) Monday-Friday. Adjust to your market close time in UTC.
+  schedule_expression = "cron(0 10 ? * MON-FRI *)" # Example: 21:00 UTC (9 PM UTC) Monday-Friday. Adjust to your market close time in UTC.
 }
 
 resource "aws_cloudwatch_event_target" "terminate_instance_target" {
